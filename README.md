@@ -1,2 +1,4 @@
 # Microflow-prediction--
-能预测微流的形成
+version 1.0
+Sign up an account,sign up and commit the statistics
+previous data is saved and you can view it

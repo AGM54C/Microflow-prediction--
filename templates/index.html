@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>大模型预测</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+<h1>大模型预测</h1>
+{% if current_user.is_authenticated %}
+<p>欢迎, {{ current_user.username }}! <a href="{{ url_for('logout') }}">退出登录</a> <a href="{{ url_for('history') }}">查看历史记录</a></p>
+{% else %}
+<p><a href="{{ url_for('register') }}">注册</a> <a href="{{ url_for('login') }}">登录</a></p>
+{% endif %}
+<form id="inputForm">
+  <label for="dataType">选择数据类型：</label>
+  <select id="dataType">
+    <option value="type1">输入八个数据（C0 流）</option>
+    <option value="type2">输入八个数据（T型）</option>
+    <option value="type3">输入九个数据（流焦）</option>
+  </select><br><br>
+  <div id="type1Inputs" style="display: none;">
+    <input type="number" name="type1_data1" placeholder="数据 1" step="0.000001">
+    <input type="number" name="type1_data2" placeholder="数据 2" step="0.000001">
+    <input type="number" name="type1_data3" placeholder="数据 3" step="0.000001">
+    <input type="number" name="type1_data4" placeholder="data4" step="0.000001">
+    <input type="number" name="type1_data5" placeholder="数据 5" step="0.000001">
+    <input type="number" name="type1_data6" placeholder="数据 6" step="0.000001">
+    <input type="number" name="type1_data7" placeholder="数据 7" step="0.000001">
+    <input type="number" name="type1_data8" placeholder="数据 8" step="0.000001">
+  </div>
+  <div id="type2Inputs" style="display: none;">
+    <input type="number" name="type2_data1" placeholder="数据 1" step="0.000001">
+    <input type="number" name="type2_data2" placeholder="数据 2" step="0.000001">
+    <input type="number" name="type2_data3" placeholder="数据 3" step="0.000001">
+    <input type="number" name="type2_data4" placeholder="data4" step="0.000001">
+    <input type="number" name="type2_data5" placeholder="数据 5" step="0.000001">
+    <input type="number" name="type2_data6" placeholder="数据 6" step="0.000001">
+    <input type="number" name="type2_data7" placeholder="数据 7" step="0.000001">
+    <input type="number" name="type2_data8" placeholder="数据 8" step="0.000001">
+  </div>
+  <div id="type3Inputs" style="display: none;">
+    <input type="number" name="type3_data1" placeholder="数据 1" step="0.000001">
+    <input type="number" name="type3_data2" placeholder="data2" step="0.000001">
+    <input type="number" name="type3_data3" placeholder="数据 3" step="0.000001">
+    <input type="number" name="type3_data4" placeholder="data4" step="0.000001">
+    <input type="number" name="type3_data5" placeholder="数据 5" step="0.000001">
+    <input type="number" name="type3_data6" placeholder="数据 6" step="0.000001">
+    <input type="number" name="type3_data7" placeholder="数据 7" step="0.000001">
+    <input type="number" name="type3_data8" placeholder="数据 8" step="0.000001">
+    <input type="number" name="type3_data9" placeholder="数据 9" step="0.000001">
+  </div>
+  <button type="submit">提交</button>
+</form>
+<div id="resultArea"></div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Flask
+torch
+numpy
+xgboost
+openpyxl
+bcrypt
+flask-login
+flask-sqlalchemy
+flask-wtf

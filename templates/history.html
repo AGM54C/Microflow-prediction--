@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>历史记录</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1>历史记录</h1>
+<table>
+    <thead>
+    <tr>
+        <th>数据类型</th>
+        <th>输入数据</th>
+        <th>预测结果</th>
+        <th>时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in history %}
+    <tr>
+        <td>{{ record.data_type }}</td>
+        <td>{{ record.input_data }}</td>
+        <td>{{ record.prediction }}</td>
+        <td>{{ record.timestamp }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('index') }}">返回主页</a>
+</body>
+</html>

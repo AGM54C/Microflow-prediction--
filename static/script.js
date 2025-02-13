@@ -6,21 +6,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const type2Inputs = document.getElementById('type2Inputs');
     const type3Inputs = document.getElementById('type3Inputs');
 
+    // 页面加载时根据当前选择显示对应输入框
+    function showSelectedInputs() {
+        const selectedType = dataTypeSelect.value;
+        type1Inputs.style.display = 'none';
+        type2Inputs.style.display = 'none';
+        type3Inputs.style.display = 'none';
+        if (selectedType === 'type1') {
+            type1Inputs.style.display = 'block';
+        } else if (selectedType === 'type2') {
+            type2Inputs.style.display = 'block';
+        } else if (selectedType === 'type3') {
+            type3Inputs.style.display = 'block';
+        }
+    }
+
+    // 页面加载时调用一次显示对应输入框
+    showSelectedInputs();
+
+    // 监听数据类型选择框的变化事件
     if (dataTypeSelect) {
         dataTypeSelect.onchange = function () {
-            type1Inputs.style.display = 'none';
-            type2Inputs.style.display = 'none';
-            type3Inputs.style.display = 'none';
-            if (dataTypeSelect.value === 'type1') {
-                type1Inputs.style.display = 'block';
-            } else if (dataTypeSelect.value === 'type2') {
-                type2Inputs.style.display = 'block';
-            } else if (dataTypeSelect.value === 'type3') {
-                type3Inputs.style.display = 'block';
-            }
+            showSelectedInputs();
         };
     }
 
+    // 监听表单的提交事件
     if (inputForm) {
         inputForm.addEventListener('submit', function (event) {
             event.preventDefault();
